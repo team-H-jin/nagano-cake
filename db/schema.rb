@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2022_08_17_075816) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,6 +58,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_075816) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
   create_table "orders", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -68,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_075816) do
     t.string "postcode"
     t.string "name"
     t.string "address"
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
