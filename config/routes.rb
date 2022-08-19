@@ -16,7 +16,7 @@ Rails.application.routes.draw do
    resources :items, only: [:index,:show]
 
    get 'customers/unsubscribe' => 'customers#unsubscribe'
-   patch 'customers:withdraw' => 'customers#withdraw'
+   patch 'customers/withdraw' => 'customers#withdraw'
    get 'customers/my_pege' => 'customers#show'
    get 'customers/information/edit' => 'customers#edit'
    patch 'customers/information' => 'customers#update'
