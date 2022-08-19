@@ -8,17 +8,17 @@
         <% if admin_signed_in? %>
 
           <li>
-            <%= link_to admin_items,class: 'nav-link text-light' do %>
+            <%= link_to admin_items_path,class: 'nav-link text-light' do %>
               <i class="fa-duotone fa-cake-slice"></i> 商品一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_cusutomers_path,class: 'nav-link text-light' do %>
+            <%=  link_to admin_customers_path,class: 'nav-link text-light' do %>
               <i class="fa-duotone fa-address-card"></i> 会員一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_order_path ,class: 'nav-link text-light' do %>
+            <%=  link_to admin_orders_path ,class: 'nav-link text-light' do %>
               <i class="fa-duotone fa-cart-shopping"></i> 注文履歴一覧
             <% end %>
           </li>
@@ -76,6 +76,11 @@
           <li>
             <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
               <i class="fa-duotone fa-right-to-bracket"></i> ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_admin_session_path ,class: 'nav-link text-light' do %>
+              <i class="fa-duotone fa-address-card"></i> 管理者用
             <% end %>
           </li>
 
