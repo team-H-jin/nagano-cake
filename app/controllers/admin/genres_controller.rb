@@ -1,13 +1,23 @@
 class Admin::GenresController < ApplicationController
     
  def new
-    @genre = Genre.new  
+    @genre = Genre.new
+    @genres = Genre.all
  end
   
  def create
-    genre = Genre.new(genere_params)
-    genre.save
-    render 
+    @genre = Genre.new(genre_params)
+    @genre.save
+    redirect_to admin_genres_path
  end
+ 
+ def edit
+    @genre = Genre.find(params[:id])
+ end     
     
+ private
+
+ def genre_params
+   params.permit(:name)
+ end    
 end
