@@ -1,10 +1,51 @@
-<h2>商品新規登録</h2>
-
-・商品画像　選択
-・商品名　フィールド
-・商品説明　フィールド
-・ジャンル　選択
-・税抜価格　フィールド　円
-・販売ステータス
-
-createボタン
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <h4>商品新規登録</h4>
+    </div>
+    <div class="col-lg-9">
+      <table>
+        <%= form_with model: [:admin,@item] do |f| %>
+        <tr>　</tr>
+        <tr>
+          <th>商品画像</th>
+          <th></th>
+          <th><%= f.file_field :image, accept: "image/*" %></th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th>　</th>
+          <th><%= f.text_field :name %></th>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <th></th>
+          <th><%= f.text_area :introduction %></th>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <th></th>
+          <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></th>
+        </tr>
+        <tr>
+          <th>税抜価格</th>
+          <th></th>
+          <th><%= f.text_field :price %>円</th>
+        </tr>
+        <tr>
+          <th>
+          販売ステータス
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>
+            <%= f.submit '新規登録', class: 'btn btn-success' %>
+          </th>
+          <th></th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
