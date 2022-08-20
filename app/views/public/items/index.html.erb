@@ -6,9 +6,9 @@
         <div class="col-lg-9">
             <h2>商品一覧</h2><p>(全＿件)</p>
             <!--商品詳細をここにeachで並べる-->
-            <div class="Item-wrap">
+            <div class="item-wrap">
             <% @items.each do |item| %>
-             <div class="Item-box">
+             <div class="item-box">
                  <%= image_tag item.image, size: "200x300" %>
             
             <span class><%= item.name %></span>
