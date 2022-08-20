@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3" style="background-color: orange;">
+            <h4>ジャンルを入れる</h4>
+        </div>
+        <div class="col-lg-9">
+            <h2>商品一覧</h2><p>(全＿件)</p>
+            <!--商品詳細をここにeachで並べる-->
+            <div class="Item-wrap">
+            <% @items.each do |item| %>
+             <div class="Item-box">
+                 <%= image_tag item.image, size: "200x300" %>
+            
+            <span class><%= item.name %></span>
+            
+            <span class><%= item.price %></span>
+            <% end %>
+             </div>
+            </div>
+        </div>
+    </div>
+</div>
