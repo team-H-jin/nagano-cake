@@ -1,4 +1,4 @@
-<h2>ジャンル一覧・追加</h2>
+<h4>ジャンル一覧・追加</h4>
     
  <%= form_with model: [:admin,@genre] do |f| %>
   <div>ジャンル名</div>
@@ -6,5 +6,7 @@
   <%= f.submit '新規登録' %>
  <% end %> 
 
- 
+ <% @genres.each do |genre| %>
+  <div><%= genre.name %></div>
+ <% end %> 
  
