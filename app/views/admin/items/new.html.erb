@@ -36,13 +36,20 @@
           <th>
           販売ステータス
           </th>
+          <th></th>
+          <th>
+          <%= f.radio_button :status, 'true' %>
+          <%= f.label :status, '販売中' %>
+          <%= f.radio_button :status, 'false' %>
+          <%= f.label :status, '販売停止中' %>
+          </th>
         </tr>
         <tr>
           <th></th>
+          <th>　</th>
           <th>
             <%= f.submit '新規登録', class: 'btn btn-success' %>
           </th>
-          <th></th>
         </tr>
         <% end %>
       </table>
