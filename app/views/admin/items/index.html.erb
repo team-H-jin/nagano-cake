@@ -1,4 +1,28 @@
 <h2>商品一覧</h2>
 
-テーブル使う、each
-商品ID、商品名、税抜価格、ジャンル、ステータス（販売ステータス）
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+      <th>編集用削除ボタン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre_id %></td>
+        <td><%= item.status %></td>
+        <td>
+          <td><%= link_to '削除', @item, method: :delete, class: "btn btn-sm btn-danger"%></td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
