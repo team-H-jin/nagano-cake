@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <h4>商品新規登録</h4>
+      <h4>商品編集</h4>
     </div>
     <div class="col-lg-9">
       <table>
@@ -25,7 +25,7 @@
         <tr>
           <th>ジャンル</th>
           <th></th>
-          <th></th>
+          <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></th>
         </tr>
         <tr>
           <th>税抜価格</th>
@@ -36,13 +36,20 @@
           <th>
           販売ステータス
           </th>
+          <th></th>
+          <th>
+          <%= f.radio_button :status, 'true' %>
+          <%= f.label :status, '販売中' %>
+          <%= f.radio_button :status, 'false' %>
+          <%= f.label :status, '販売停止中' %>
+          </th>
         </tr>
         <tr>
           <th></th>
+          <th>　</th>
           <th>
             <%= f.submit '変更を保存', class: 'btn btn-success' %>
           </th>
-          <th></th>
         </tr>
         <% end %>
       </table>

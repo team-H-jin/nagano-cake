@@ -1,10 +1,35 @@
-<h2>商品詳細</h2>
-
-・画像
-・商品名
-・商品説明
-・ジャンル
-・税込価格（税抜価格）
-・販売ステータス
-
-editボタン
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h4>商品詳細</h4>
+      <%= image_tag @item.image, size:'250x250' %>
+    </div>
+    <div class="col-lg-8"><br><br>
+      <table>
+        <tr>
+          <td>商品名</td>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td>※直す<%= @item.genre_id %></td>
+        </tr>
+        <tr>
+          <td>税抜価格<br>（税抜価格）</td>
+          <td>※直す（<%= @item.price %>）円</td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <td>※直す<%= @item.status %></td>
+        </tr>
+          <td></td>
+          <td><%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-sm btn-success" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
