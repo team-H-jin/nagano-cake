@@ -1,12 +1,11 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
   def create
@@ -17,7 +16,6 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-     @genres = Genre.all
   end
 
   def edit
@@ -30,6 +28,12 @@ class Admin::ItemsController < ApplicationController
     @genres = Genre.all
       @item.update(item_params)
       redirect_to admin_item_path(@item.id)
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to admin_items_path
   end
 
   private
