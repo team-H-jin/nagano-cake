@@ -1,28 +1,41 @@
-<h2>商品一覧</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-      <th>編集用削除ボタン</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre_id %></td>
-        <td><%= item.status %></td>
-        <td>
-          <td><%= link_to '削除', @item, method: :delete, class: "btn btn-sm btn-danger"%></td>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+    <h4><span class="bg-primary">商品一覧</span></h4>
+    <table cellspacing="10">
+      <thead>
+        <tr>
+          <th>商品ID　　</th>
+          <th>商品名　　　　　　　　　</th>
+          <th>税抜価格　　</th>
+          <th>ジャンル　　　</th>
+          <th>ステータス　　</th>
+          <th>編集用削除ボタン</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
+          <td><%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <td>
+            <% if item.status == true %>
+      					<p class="text-success">販売中</p>
+      			<% else item.status == false %>
+      					<p class="text-secondary">販売停止中</p>
+      			<% end %>
+          </td>
+          <td>
+            <%= link_to '削除', [:admin,item], method: :delete, class: "btn btn-sm btn-danger"%>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
