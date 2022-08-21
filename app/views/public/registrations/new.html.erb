@@ -24,6 +24,9 @@
     <div class="address_field">
       <%= f.label :住所　　　　　　　　　　　　　　 %><%= f.text_field :address, autofocus: true %>
     </div><br>
+    <div class="phone_number_field">
+      <%= f.label :電話番号（ハイフンなし）　　　　 %><%= f.text_field :phone_number, autofocus: true %>
+    </div><br>
     <div class="password_field">
       <%= f.label :パスワード（６文字以上）　　　　 %>
       <%= f.password_field :password, autocomplete: "new-password" %><br>
