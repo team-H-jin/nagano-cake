@@ -7,27 +7,27 @@
       <table class="table-bordered">
         <tr>
           <th>氏名</th>
-          <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
         </tr>
         <tr>
           <th>カナ</th>
-          <td><%= current_customer.last_name_kana %><%= current_customer.first_name_kana %></td>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <td><%= current_customer.postcode %></td>
+          <td><%= @customer.postcode %></td>
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= current_customer.address %></td>
+          <td><%= @customer.address %></td>
         </tr>
         <tr>
           <th>電話番号</th>
-          <td><%= current_customer.phone_number %></td>
+          <td><%= @customer.phone_number %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <td><%= current_customer.email %></td>
+          <td><%= @customer.email %></td>
         </tr>
       </table>
       <h5><strong>配送先</strong></h5><%= link_to "一覧を見る", addresses_path(@customer), class: "btn btn-primary" %>
