@@ -3,12 +3,12 @@
   <div class='row'>
    <h4>ジャンル一覧・追加</h4>
    </div>
-   <div class='row'>   
+   <div class='row'>
     <%= form_with model: [:admin,@genre] do |f| %>
      ジャンル名
      <%= f.text_field :name, placeholder:"ジャンル名" %>
      <%= f.submit '新規登録', class: 'btn btn-success' %>
-    <% end %> 
+    <% end %>
     </div>
   <div class='row'>
     <div class='col-md-4'>
@@ -16,8 +16,8 @@
     <thead>
      <tr>
       <th>ジャンル</th>
-     </tr> 
-    </thead> 
+     </tr>
+    </thead>
     <tbody>
      <% @genres.each do |genre| %>
       <tr>
@@ -25,13 +25,13 @@
        <td>　　</td>
        <td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-success'%></td>
        <td><%= link_to '削除', [:admin,genre], method: :delete, class: "btn btn-sm btn-danger"%></td>
-      <% end %> 
-      </tr> 
-    </tbody> 
+      <% end %>
+      </tr>
+    </tbody>
    </table>
-  </div> 
+  </div>
   <div class='col-md-8'></div>
  </div>
-</div>   
+</div>
 
 
