@@ -1,4 +1,4 @@
-class Public::AddressesController < ApplicationController
+class Public::ShoppingAddressesController < ApplicationController
 
   def index
     @shopping_address = ShoppingAddress.new

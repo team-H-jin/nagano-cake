@@ -26,7 +26,7 @@ Rails.application.routes.draw do
    post 'orders/confirm' => 'orders#confirm'
    get 'orders/done' => 'orders#done'
    resources :orders, only: [:new,:create,:index,:show]
-   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
+   resources :shopping_addresses, only: [:index,:edit,:create,:update,:destroy]
  end
  namespace :admin do
    root to: "homes#top"
