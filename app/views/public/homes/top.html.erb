@@ -1,15 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-3" style="background-color: orange;">
-            <h4>ジャンルを入れる</h4>
+        <div class="col-lg-3">
+            <h4></h4>
             </div>
             
         <div class="col-lg-9">
          <div class="parent">
-           <%= image_tag 'reserve.png', size: "500x300" %>
-            <img src="images/reserve.png" />
-            <p>サンプル</p>
-            </div>
+           <%= image_tag 'images (3).jpeg', size: "500x300" %>
+    　　</div>
             <!--bootstrap 反応しない-->
          <div class="card" style="max-width: 400px;">
          <img class="card-img" src="reserve.png" alt="">
@@ -20,12 +18,17 @@
          
          <h4>新着商品</h4>
          <div class="item-wrap">
+             <tbody>
              <% @items.each do |item| %>
+              <tr>
              <div class="item-box">
-                 <%= image_tag item.image, size: "200x300" %>
+                <td><%= image_tag item.image, size: "200x200" %></td>
+                <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                <td>¥<%= item.price %>-</td>
+              </tr>
                  <% end %>
-             <%= paginate @items %>
-             
+            </tbody>
+                 
              </div>     
           </div>
         </div>
