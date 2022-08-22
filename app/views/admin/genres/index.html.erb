@@ -6,7 +6,7 @@
    <div class='row'>   
     <%= form_with model: [:admin,@genre] do |f| %>
      ジャンル名
-     <%= f.text_field :name %>
+     <%= f.text_field :name, placeholder:"ジャンル名" %>
      <%= f.submit '新規登録', class: 'btn btn-success' %>
     <% end %> 
     </div>
