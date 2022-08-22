@@ -10,3 +10,4 @@ class Item < ApplicationRecord
 
 
 end
+
