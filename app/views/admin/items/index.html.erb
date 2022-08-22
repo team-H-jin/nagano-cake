@@ -1,17 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+    <br>
     <h4><span class="bg-primary">商品一覧</span></h4>
-    <table cellspacing="10">
+    <br>
+    <table class="table table-hover">
       <thead>
-        <tr>
+        <tr class="table-info">
           <th>商品ID　　</th>
-          <th>商品名　　　　　　　　　</th>
+          <th>商品名　　　　</th>
           <th>税抜価格　　</th>
           <th>ジャンル　　　</th>
           <th>ステータス　　</th>
-          <th>編集用削除ボタン</th>
+          <th>編集用</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +37,8 @@
         <% end %>
       </tbody>
     </table>
+    <div class="mx-auto" style="width: 200px;"><%= paginate @items %></div>
     </div>
-    <div class="col-lg-2"></div>
+    <div class="col-lg-1"></div>
   </div>
 </div>
