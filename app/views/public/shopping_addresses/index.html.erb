@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
-      <h4><span class="bg-primary">配送先登録/一覧</span></h4>
+      <br><h4>　　<span class="bg-primary">配送先登録/一覧</span></h4><br>
       <table>
-        <%= form_with model: @shopping_address , url: addresses_path , method: :post do |f| %>
+        <%= form_with model: @shopping_address , url: shopping_addresses_path , method: :post do |f| %>
         <tr>
           <td>郵便番号(ハイフンなし)　　</td>
           <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
@@ -18,31 +18,34 @@
         <tr>
           <td>宛名</td>
           <td><%= f.text_field :name, placeholder: "令和道子" %></td>
-          <td><%= f.submit '新規登録', class: 'btn btn-success' %></td>
+          <td>　　<%= f.submit '新規登録', class: 'btn btn-success' %></td>
         </tr>
         <% end %>
       </table>
       <br>
       <br>
       <br>
-      <table border="1" >
-        <tr>
-          <td>郵便番号</td>
-          <td>住所</td>
-          <td>宛名</td>
-          <td>　　　　　</td>
-        </tr>
-        <tr>
-
-          <td><%= @shopping_address.postcode %></td>
-          <td><%= @shopping_address.address %></td>
-          <td><%= @shopping_address.name %></td>
-          <td>
-            <%= link_to '編集する', class: "btn btn-sm btn-success" %>
-            <%= link_to '削除する', class: "btn btn-sm btn-danger"%>
-          </td>
-
-        </tr>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-info">
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shopping_addresses.each do |shopping_address| %>
+          <tr>
+            <td><%= shopping_address.postcode %></td>
+            <td><%= shopping_address.address %></td>
+            <td><%= shopping_address.name %></td>
+            <td>
+              <%= link_to '編集する', edit_shopping_address_path(shopping_address.customer_id), class: "btn btn-sm btn-success" %>　<%= link_to '削除する', shopping_address_path(shopping_address.id), method: :delete, class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
     <div class="col-lg-1"></div>

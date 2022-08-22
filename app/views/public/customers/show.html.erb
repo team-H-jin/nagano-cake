@@ -30,5 +30,5 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
-      <h5><strong>配送先</strong></h5><%= link_to "一覧を見る", addresses_path(@customer), class: "btn btn-primary" %>
+      <h5><strong>配送先</strong></h5><%= link_to "一覧を見る", shopping_addresses_path(@customer), class: "btn btn-primary" %>
       <h5><strong>注文履歴</strong></h5><%= link_to "一覧を見る", orders_path(@customer), class: "btn btn-primary" %>

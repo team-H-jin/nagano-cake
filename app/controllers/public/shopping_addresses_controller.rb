@@ -7,9 +7,9 @@ class Public::ShoppingAddressesController < ApplicationController
 
 	def create
 	  @shopping_address = ShoppingAddress.new(shopping_address_params)
-
+      @shopping_address.customer_id = current_customer.id
       @shopping_address.save
-      redirect_to addresses_path
+      redirect_to shopping_addresses_path
 
 	end
 
@@ -20,13 +20,13 @@ class Public::ShoppingAddressesController < ApplicationController
 	def update
 	  @shopping_address = ShoppingAddress.find(params[:id])
 	    @shopping_address.update(shopping_address_params)
-	    redirect_to addresses_path
+	    redirect_to shopping_addresses_path
 	end
 
 	def destroy
 	  @shopping_address = ShoppingAddress.find(params[:id])
 	    @shopping_address.destroy
-	    redirect_to addresses_path
+	    redirect_to shopping_addresses_path
 	end
 
 	private
