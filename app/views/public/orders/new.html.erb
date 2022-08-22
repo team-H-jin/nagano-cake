@@ -1,9 +1,19 @@
 
-<p>注文情報入力</p
+<p>注文情報入力</p>
+<strong>支払方法</strong>
 <%= form_with model:@order do |f| %>
 <%= f.radio_button :payment_method, 'credit_card' %>
 <%= f.label :payment_method, 'クレジットカード' %>
 
 <%= f.radio_button :payment_method, 'transfer' %>
 <%= f.label :payment_method, '銀行振込' %>
+<% end %>
+<strong>お届け先</strong>
+<%= form_with model:@address do |f| %>
+
+
+
+
+<%= f.select :address_id, options_from_collection_for_select(ShoppingAddress.all, :id, :address_display) %>
+
 <% end %>
