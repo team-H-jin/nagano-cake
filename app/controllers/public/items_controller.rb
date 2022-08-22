@@ -4,4 +4,7 @@ class Public::ItemsController < ApplicationController
         @items = Item.page(params[:page])
     end 
     
+    def show
+      @items = Item.find(params[:id])
+    end
 end
