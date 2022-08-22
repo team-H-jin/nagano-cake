@@ -2,10 +2,9 @@ class ShoppingAddress < ApplicationRecord
   belongs_to :customer
   
   def new
-  @address = ShoppingAddres
+  @address = ShoppingAddres 
   end 
-  
-end
-def address_display
-  '〒' + postal_code + ' ' + address + ' ' + name
+  def address_display
+  '〒' + postcode + ' ' + address + ' ' + name 
+  end
 end
