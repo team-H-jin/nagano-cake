@@ -3,17 +3,18 @@
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
     <br>
-    <h4><span class="bg-primary">商品一覧</span></h4>
+    <h4><u>商品一覧</u></h4>
     <br>
-    <table class="table table-hover">
+    <table class="table table-hover rounded">
       <thead>
         <tr class="table-info">
-          <th>商品ID　　</th>
-          <th>商品名　　　　</th>
-          <th>税抜価格　　</th>
-          <th>ジャンル　　　</th>
-          <th>ステータス　　</th>
-          <th>編集用</th>
+          <th>商品ID　</th>
+          <th>商品名　</th>
+          <th>商品画像</th>
+          <th>税抜価格　</th>
+          <th>ジャンル　</th>
+          <th>ステータス　</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +22,11 @@
         <tr>
           <td><%= item.id %></td>
           <td><%= link_to item.name, admin_item_path(item.id) %></td>
-          <td><%= item.price %></td>
+          <td>
+            <%= link_to admin_item_path(item.id) do %>
+            <%= image_tag item.image, size:'50x50' %><% end %>
+          </td>
+          <td><%= item.price %>円</td>
           <td><%= item.genre.name %></td>
           <td>
             <% if item.status == true %>
@@ -31,7 +36,7 @@
       			<% end %>
           </td>
           <td>
-            <%= link_to '削除', [:admin,item], method: :delete, class: "btn btn-sm btn-danger"%>
+            <%= link_to '削除', [:admin,item], method: :delete, class: "btn btn-sm btn-danger rounded-pill"%>
           </td>
         </tr>
         <% end %>
@@ -39,6 +44,10 @@
     </table>
     <div class="mx-auto" style="width: 200px;"><%= paginate @items %></div>
     </div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-1">
+      <%=  link_to new_admin_item_path do %>
+      <button type="button" class="btn btn-outline-warning rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+      <% end %>
+    </div>
   </div>
 </div>

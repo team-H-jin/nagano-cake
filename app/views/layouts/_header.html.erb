@@ -1,92 +1,83 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-white bg-white">
     <div class="container">
-    <%= image_tag 'logo.jpg', size: "120x120" %>
-
+      <%= image_tag 'logo.jpg', size: "100x100" %>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
         <% if admin_signed_in? %>
-
-          <li>
-            <%= link_to admin_items_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to admin_items_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-birthday-cake"></i> 商品一覧
             <% end %>
           </li>
-          <li>
-            <%=  link_to admin_customers_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%=  link_to admin_customers_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-address-book"></i> 会員一覧
             <% end %>
           </li>
-          <li>
-            <%=  link_to admin_orders_path ,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%=  link_to admin_orders_path ,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-shopping-cart"></i> 注文履歴一覧
             <% end %>
           </li>
-          <li>
-            <%=  link_to admin_genres_path ,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%=  link_to admin_genres_path ,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-mug-hot"></i> ジャンル一覧
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to destroy_admin_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
-
         <% elsif customer_signed_in? %>
-
-          <li>
-            <%= link_to customers_my_page_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to customers_my_page_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-address-card"></i> マイページ
             <% end %>
           </li>
-          <li>
-            <%=  link_to items_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%=  link_to items_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-birthday-cake"></i> 商品一覧
             <% end %>
           </li>
-          <li>
-            <%=  link_to cart_items_path ,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%=  link_to cart_items_path ,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-shopping-cart"></i> カート
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark' do %>
-
+          <li class="m-1">
+            <%= link_to destroy_customer_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
-
             <% end %>
           </li>
-
         <% else %>
-
-          <li>
-            <%= link_to about_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to about_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-store"></i> About
             <% end %>
           </li>
-          <li>
-            <%= link_to items_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to items_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-birthday-cake"></i> 商品一覧
             <% end %>
           </li>
-          <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to new_customer_registration_path,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-user-edit"></i> 新規登録
             <% end %>
           </li>
-          <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to new_customer_session_path ,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
-          <li>
-            <%= link_to new_admin_session_path ,class: 'nav-link text-dark' do %>
+          <li class="m-1">
+            <%= link_to new_admin_session_path ,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-id-badge"></i> 管理者用
             <% end %>
           </li>
-
         <% end %>
         </ul>
       </div>

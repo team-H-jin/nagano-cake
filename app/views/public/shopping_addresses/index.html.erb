@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
-      <br><h4>　　<span class="bg-primary">配送先登録/一覧</span></h4><br>
+      <br><h4>　　<u>配送先登録 / 一覧</u></h4><br>
       <table>
         <%= form_with model: @shopping_address , url: shopping_addresses_path , method: :post do |f| %>
         <tr>
@@ -18,11 +18,10 @@
         <tr>
           <td>宛名</td>
           <td><%= f.text_field :name, placeholder: "令和道子" %></td>
-          <td>　　<%= f.submit '新規登録', class: 'btn btn-success' %></td>
+          <td>　　<%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %></td>
         </tr>
         <% end %>
       </table>
-      <br>
       <br>
       <br>
       <table class="table table-bordered">
@@ -41,7 +40,7 @@
             <td><%= shopping_address.address %></td>
             <td><%= shopping_address.name %></td>
             <td>
-              <%= link_to '編集する', edit_shopping_address_path(shopping_address.customer_id), class: "btn btn-sm btn-success" %>　<%= link_to '削除する', shopping_address_path(shopping_address.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to '編集する', edit_shopping_address_path(shopping_address.customer_id), class: "btn btn-sm btn-success rounded-pill" %>　<%= link_to '削除する', shopping_address_path(shopping_address.id), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
             </td>
           </tr>
           <% end %>
