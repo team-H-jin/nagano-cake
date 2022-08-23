@@ -21,8 +21,8 @@ Rails.application.routes.draw do
    get 'customers/my_page' => 'customers#show'
    get 'customers/information/edit' => 'customers#edit'
    patch 'customers/information' => 'customers#update'
-   resources :cart_items, only: [:index,:update,:destroy,:create]
    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+   resources :cart_items, only: [:index,:update,:destroy,:create]
    post 'orders/confirm' => 'orders#confirm'
    get 'orders/done' => 'orders#done'
    resources :orders, only: [:new,:create,:index,:show]

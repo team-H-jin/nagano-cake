@@ -7,6 +7,7 @@ class Public::CartItemsController < ApplicationController
   end
   
   def index
+    @customer = current_customer
     @cart_items = CartItem.all
     @sum = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
@@ -18,17 +19,20 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
   
+  def destroy_all
+    @customer = current_customer
+    @cart_item = CartItem.where(customer_id:@customer)
+    @cart_item.destroy_all
+    redirect_to cart_items_path
+  end
+  
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
   end
   
-  def destroy_all
-    cart_items.destroy_all
-    redirect_to cart_items_path
-  end
-  
+
   
 private
 
