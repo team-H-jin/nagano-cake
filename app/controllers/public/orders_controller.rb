@@ -27,7 +27,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def comfirm
-
+    @cart_items = CartItem.all
+    @sum = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total =
 
 
 
@@ -40,10 +42,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-
-
-
-
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    redirect_to orders_done_path
 
 
 
