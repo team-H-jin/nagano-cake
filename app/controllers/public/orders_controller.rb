@@ -28,8 +28,7 @@ class Public::OrdersController < ApplicationController
 
   def comfirm
     @cart_items = CartItem.all
-    @sum = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @total =
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
 
 
 
