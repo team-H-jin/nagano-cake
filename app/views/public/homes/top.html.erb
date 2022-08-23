@@ -6,30 +6,33 @@
             
         <div class="col-lg-9">
          <div class="parent">
-           <%= image_tag 'images (3).jpeg', size: "500x300" %>
+          
     　　</div>
             <!--bootstrap 反応しない-->
-         <div class="card" style="max-width: 400px;">
+         <div class="background-new" style="">
          <img class="card-img" src="reserve.png" alt="">
           <div class="card-img-overlay">
-         <p class="text-white">ここにテキストが入ります。</p>
+         <p class="text-white">
+          <br>
+          ようこそ、ながのCAKEへ！<br>
+          このサイトでは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。<br>
+         </p>
           </div>
          </div>
-         
+         <div class="container">
+    </div>
          <h4>新着商品</h4>
-         <div class="item-wrap">
-             <tbody>
+         <div class="item-wrap row">
              <% @items.each do |item| %>
-              <tr>
-             <div class="item-box">
-                <td><%= image_tag item.image, size: "200x200" %></td>
-                <td><%= link_to item.name, admin_item_path(item.id) %></td>
-                <td>¥<%= item.price %>-</td>
-              </tr>
+              <div class="item-box col-lg-3">
+                <div><%= image_tag item.image, size: "200x200" %></div>
+                <div><%= link_to item.name, admin_item_path(item.id) %></div>
+                <div>¥<%= item.price %>-</div>
+              </div>
                  <% end %>
-            </tbody>
-                 
-             </div>     
+                 <%= paginate @items %>
           </div>
         </div>
     </div>
