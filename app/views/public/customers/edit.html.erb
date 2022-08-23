@@ -3,29 +3,29 @@
     <div class="col-auto mx-auto">
    <h4>会員情報編集</h4>
    
-   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-   <%= render "public/shared/error_messages", resource: resource %>
+   <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+
    
    <div class="edit_form">
     <div class="kanji_name_field">
-      <%= f.label :名前　　　　　　　　　　　%><%= f.text_field :last_name, autofocus: true %>
+      <%= f.label :名前　　　　　　　　　　　　　　%><%= f.text_field :last_name, autofocus: true %>
       <%= f.label :　　　 %><%= f.text_field :first_name, autofocus: true %>
     </div><br>
     <div class="kana_name_field">
-      <%= f.label :フリガナ　　　　　　　　　%><%= f.text_field :last_name_kana, autofocus: true %>
+      <%= f.label :フリガナ　　　　　　　　　　　　%><%= f.text_field :last_name_kana, autofocus: true %>
       <%= f.label :　　　 %><%= f.text_field :first_name_kana, autofocus: true %>
     </div><br>
-    <div class="email_field">
-      <%= f.label :メールアドレス　　　　　　　　　 %><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div><br>
     <div class="postcode_field">
-      <%= f.label :郵便番号　　　　 %><%= f.text_field :postcode, autofocus: true %>
+      <%= f.label :郵便番号　　　　　　　　　　　　%><%= f.text_field :postcode, autofocus: true %>
     </div><br>
     <div class="address_field">
-      <%= f.label :住所　　　　　　　　　　　　　　 %><%= f.text_field :address, autofocus: true %>
+      <%= f.label :住所　　　　　　　　　　　　　　%><%= f.text_field :address, autofocus: true %>
     </div><br>
     <div class="phone_number_field">
-      <%= f.label :電話番号　　　　 %><%= f.text_field :phone_number, autofocus: true %>
+      <%= f.label :電話番号　　　　　　　　　　　　%><%= f.text_field :phone_number, autofocus: true %>
+    </div><br>
+    <div class="email_field">
+      <%= f.label :メールアドレス　　　　　　　　　%><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div><br>
 
     <div class="col-auto mx-auto">
@@ -33,3 +33,8 @@
     </div>
    </div>
    <% end %>
+   
+   <%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger" %>
+		</div>
+	</div>
+</div>
