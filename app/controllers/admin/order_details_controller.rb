@@ -8,6 +8,6 @@ class Admin::OrderDetailsController < ApplicationController
  private  
  
  def order_detail_params
-    params.require(:order_detail).permit(:last_name,:first_name,)
+    params.require(:order_detail).permit(:last_name,:first_name,:order_id,:item_id)
  end   
 end
