@@ -28,7 +28,7 @@
              <% @items.each do |item| %>
               <div class="item-box col-lg-3">
                 <div><%= image_tag item.image, size: "200x200" %></div>
-                <div><%= link_to item.name, admin_item_path(item.id) %></div>
+                <div><%= link_to item.name, item_path(item.id) %></div>
                 <div>¥<%= item.price %>-</div>
               </div>
                  <% end %>
