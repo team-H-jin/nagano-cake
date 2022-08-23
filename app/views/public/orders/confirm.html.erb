@@ -8,10 +8,42 @@
     <th>小計</th>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+    <% @cart_items.each do |cart_item| %>
     <tr>
-      
+      <td>
+        <%= image_tag cart_item.item.image, size:'250x250' %>
+        <%= cart_item.item.name %>
+      </td>
+      <td><%= cart_item.item.add_tax_price%></td>
+      <td><%= cart_item.item.quantity%></td>
+      <td><%= cart_item.subtotal%></td>
     </tr>
   </tbody>
-  
 </table>
+
+<table class="table bordered">
+  <tr>
+    <th>送料</th>
+    <td>800</td>
+  </tr>
+  <tr>
+    <th>商品合計</th>
+    <td><%= @sum.round(:delimited)%></td>
+  </tr>
+  <tr>
+    <th>請求金額</th>
+    <td></td>
+  </tr>
+</table>
+
+<div class="payment_method">
+  <h4><strong>支払方法</strong></h4>
+  
+</div>
+
+<div class="address">
+  <h4><strong>お届け先</strong></h4>
+  
+</div>
+
+<link_to "注文を確認する", orders_path, method: :post, class: "btn btn-success" %>
