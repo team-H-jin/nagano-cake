@@ -55,28 +55,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
-
-
-
-
-
-
-
-
+    @order = Order.find(params[:id])
+    @order.order_details
+    @sum = 0
+    @order.order_details.each do |detail|
+      @sum | - detail.puantity * detail.price
+    end
+    @sum += 800
   end
 
   def show
-    # @order = Order.find(params[:id])
-
-
-
-
-
-
-
-
-
+    @order = Order.find(params[:id])
+    @order.order_details
+    @sum = 0
+    @order.order_details.each do |detail|
+      @sum | - detail.puantity * detail.price
+    end
+    @sum += 800
   end
 
   private
