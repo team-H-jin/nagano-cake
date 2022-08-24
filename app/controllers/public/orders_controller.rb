@@ -27,6 +27,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def comfirm
+    @cart_items = CartItem.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
 
 
 
@@ -63,6 +65,7 @@ class Public::OrdersController < ApplicationController
 
 
 
+
   end
 
   def show
@@ -76,6 +79,24 @@ class Public::OrdersController < ApplicationController
 
 
 
+
+    @order = Order.find(params[:id])
+    @order.order_details
+    @sum = 0
+    @order.order_details.each do |detail|
+      @sum | - detail.puantity * detail.price
+    end
+    @sum += 800
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order.order_details
+    @sum = 0
+    @order.order_details.each do |detail|
+      @sum | - detail.puantity * detail.price
+    end
+    @sum += 800
   end
 
   private

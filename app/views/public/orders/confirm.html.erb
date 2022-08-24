@@ -28,7 +28,7 @@
   </tr>
   <tr>
     <th>商品合計</th>
-    <td><%= @sum.round(:delimited)%></td>
+    <td><%= cart_item.gross %></td>
   </tr>
   <tr>
     <th>請求金額</th>
@@ -38,7 +38,7 @@
 
 <div class="payment_method">
   <h4><strong>支払方法</strong></h4>
-  
+  <%= 
 </div>
 
 <div class="address">
