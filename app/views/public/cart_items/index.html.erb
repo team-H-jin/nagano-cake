@@ -1,7 +1,9 @@
 <h4>ショッピングカート</h4>
 <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger"%>
+
 <%= form_with model: cart_item, url: cart_item_path(id: cart_item.id), method: :patch do |f| %>
 <table class="table-bordered"> 
+
   <thead>
       <th>商品名</th>
       <th>単価(税込)</th>

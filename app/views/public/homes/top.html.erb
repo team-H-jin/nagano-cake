@@ -1,8 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <h4></h4>
-            </div>
+           <p>ジャンル検索</p>
+            <% @genres.each do |genre| %>
+            <%= link_to genre.name,genre_path(genre) %><br>
+            <% end %>
+        </div>
             
         <div class="col-lg-9">
          <div class="parent">

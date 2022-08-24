@@ -3,8 +3,8 @@
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
       <br><h4>　　<u>配送先登録 / 一覧</u></h4><br>
+      <%= form_with model: @shopping_address , url: shopping_addresses_path , method: :post do |f| %>
       <table>
-        <%= form_with model: @shopping_address , url: shopping_addresses_path , method: :post do |f| %>
         <tr>
           <td>郵便番号(ハイフンなし)　　</td>
           <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
@@ -20,8 +20,8 @@
           <td><%= f.text_field :name, placeholder: "令和道子" %></td>
           <td>　　<%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %></td>
         </tr>
-        <% end %>
       </table>
+      <% end %>
       <br>
       <br>
       <table class="table table-bordered">

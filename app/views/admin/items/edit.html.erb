@@ -5,8 +5,8 @@
       <br><h4>　　<u>商品編集</u></h4>
     </div>
     <div class="col-lg-6"><br>
+    <%= form_with model: [:admin,@item] do |f| %>
       <table>
-        <%= form_with model: [:admin,@item] do |f| %>
         <tr>　</tr>
         <tr>
           <th>商品画像</th>
@@ -52,8 +52,8 @@
             <%= f.submit '変更を保存', class: 'btn btn-success rounded-pill' %>
           </th>
         </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
     <div class="col-lg-2"></div>
   </div>

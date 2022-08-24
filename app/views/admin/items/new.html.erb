@@ -5,8 +5,8 @@
       <h4><u>商品新規登録</u></h4>
     </div>
     <div class="col-lg-6">
+      <%= form_with model: [:admin,@item] do |f| %>
       <table>
-        <%= form_with model: [:admin,@item] do |f| %>
         <tr>　</tr>
         <tr>
           <th>商品画像</th>
@@ -52,8 +52,8 @@
             <%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %>
           </th>
         </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
     <div class="col-lg-2"></div>
   </div>
