@@ -56,21 +56,27 @@ class Public::OrdersController < ApplicationController
   def index
     @order = Order.find(params[:id])
     @order.order_details
-    @sum = 0
-    @order.order_details.each do |detail|
-      @sum | - detail.puantity * detail.price
-    end
-    @sum += 800
+
+    @subtotal=
+      @sum = 0
+      @order.order_details.each do |order_detail|
+      @sum += detail.quantity * order_detail.price
+      end
+
+    @total = @subtotal += 800
   end
 
   def show
     @order = Order.find(params[:id])
     @order.order_details
-    @sum = 0
-    @order.order_details.each do |detail|
-      @sum | - detail.puantity * detail.price
-    end
-    @sum += 800
+
+    @subtotal=
+      @sum = 0
+      @order.order_details.each do |order_detail|
+      @sum += detail.quantity * order_detail.price
+      end
+
+    @total = @subtotal += 800
   end
 
   private
