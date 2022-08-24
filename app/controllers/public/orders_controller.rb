@@ -1,11 +1,38 @@
 class Public::OrdersController < ApplicationController
 
   def new
+
     @order = Order.new
+      
+
+
+
+
+
+
+
+
+  end
+
+  def done
+
+
+
+
+
+
+
+
+
+
+
+    @order = Order.new
+
   end
 
   def confirm
     @cart_items = current_customer.cart_items.all
+
     @sum = 0
     @cart_items.each do |cart_item|
       @sum += cart_item.sum_price
@@ -13,6 +40,7 @@ class Public::OrdersController < ApplicationController
     @total = @sum + postage
 
     @order = Order.new(order_params)
+
 
     if params[:order][:selected_address] == "customer_address"
       @order.postcode = current_customer.postcode
@@ -52,4 +80,5 @@ class Public::OrdersController < ApplicationController
   	                              :price, :payment_method, :status,
   	                              :created_at, :customer_id, :item_id, :quantity)
   end
+
 end
