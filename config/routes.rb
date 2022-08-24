@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
  scope module: :public do
+   post 'orders/confirm' => 'orders#confirm'
    root to: "homes#top"
    get 'about' => 'homes#about'
    resources :items, only: [:index,:show]
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
    patch 'customers/information' => 'customers#update'
    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
    resources :cart_items, only: [:index,:update,:destroy,:create]
-   post 'orders/confirm' => 'orders#confirm'
    get 'orders/done' => 'orders#done'
    resources :orders, only: [:new,:create,:index,:show]
    resources :shopping_addresses, only: [:index,:edit,:create,:update,:destroy]
