@@ -1,7 +1,8 @@
 class Public::OrdersController < ApplicationController
 
- def new
-   @order = Order.new
+  def new
+      @order = Order.new
+      
 
 
 
@@ -10,8 +11,7 @@ class Public::OrdersController < ApplicationController
 
 
 
-
- end
+  end
 
   def done
 
@@ -28,13 +28,9 @@ class Public::OrdersController < ApplicationController
 
   def comfirm
     @cart_items = current_customer.cart_items.all
+    @order = Order.find(params[:id])
     @total = @cart_items.inject(0) { |sum, item| sum + item.gross }
 
-    @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
 
 
 
@@ -115,4 +111,5 @@ class Public::OrdersController < ApplicationController
   def order_params
   	params.require(:order).permit(:name, :address, :postcode, :postage, :price, :payment_method, :status, :created_at, :customer_id)
   end
+
 end
