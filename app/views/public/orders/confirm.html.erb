@@ -32,18 +32,22 @@
   </tr>
   <tr>
     <th>請求金額</th>
-    <td></td>
+    <td><%= @total.round.to_s(:delimited) %></td>
   </tr>
 </table>
+<% end %>
 
 <div class="payment_method">
-  <h4><strong>支払方法</strong></h4>
-  <%= 
+  <h4><strong>支払方法</strong></h4></br>
+  <p><%= @order.payment_method %></p>
 </div>
 
 <div class="address">
-  <h4><strong>お届け先</strong></h4>
-  
+  <h4><strong>お届け先</strong></h4></br>
+  <p><%= @order.postcode %><%= @order.address %></p></br>
+  <p><%= @order.name %></p>
 </div>
 
-<link_to "注文を確認する", orders_path, method: :post, class: "btn btn-success" %>
+<%= form_with model: @order, url:orders_path, method: :post do |f| %>
+  <%= f.submit "注文を確定する",class:"btn btn-primary" %>
+<% end %>
