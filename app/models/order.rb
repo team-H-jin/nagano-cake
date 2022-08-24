@@ -9,14 +9,10 @@ class Order < ApplicationRecord
     (self.price * 1.10).round
   end
   
-    ## 小計を求めるメソッド
+  ## 小計を求めるメソッド
   def subtotal
-    item.add_tax_price * quantity
+    order.add_tax_price * quantity
   end
-  
-    ## 商品合計を求めるメソッド
-  def gross
-    subtotal + 800
-  end
+    
 
 end
