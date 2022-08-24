@@ -20,12 +20,12 @@
               <%= cart_item.item.name %>
             </td>
             <td><%= cart_item.item.add_tax_price%></td>
-            <td><%= cart_item.item.quantity%></td>
-            <td><%= cart_item.subtotal%></td>
+            <td><%= cart_item.quantity%></td>
+            <td><%= cart_item.sum_price %></td>
           </tr>
         </tbody>
       </table>
-
+      <% end %>
       <table class="table-bordered">
         <tr>
           <th style="background-color:#F5F5F5;">送料</th>
@@ -33,14 +33,14 @@
         </tr>
         <tr>
           <th style="background-color:#F5F5F5;">商品合計</th>
-          <td><%= cart_item.gross %></td>
+          <td><%= @sum %></td>
         </tr>
         <tr>
           <th style="background-color:#F5F5F5;">請求金額</th>
           <td><%= @total.round.to_s(:delimited) %></td>
         </tr>
       </table>
-      <% end %>
+
 
       <div class="payment_method">
         <h4><strong>支払方法</strong></h4></br>
