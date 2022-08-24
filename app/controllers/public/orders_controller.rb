@@ -38,13 +38,14 @@ class Public::OrdersController < ApplicationController
 
 
 
+
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    redirect_to orders_done_path
+
+
+
+
 
 
 
@@ -54,6 +55,31 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+
+
+
+
+
+
+
+
+
+
+
+  end
+
+  def show
+
+
+
+
+
+
+
+
+
+
+
     @order = Order.find(params[:id])
     @order.order_details
     @sum = 0
