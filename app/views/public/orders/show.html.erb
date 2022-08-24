@@ -28,13 +28,13 @@
       <table class="table table-bordered">
         <tr>
           <td>商品合計</td>
-          <td>調べる</td>
+          <td><%= @subtotal.add_tax_price.to_s(:dalimited) %></td>
         </tr>
           <td>配送料</td>
           <td>800</td>
     		</tr>
           <td>ご請求額</td>
-          <td><%= order.sum %></td>
+          <td><%= @total.add_tax_price.to_s(:dalimited) %></td>
         </tr>
       </table><br><br>
 
@@ -46,11 +46,11 @@
           <td>小計</td>
         </tr>
         <tr>
-          <% @order_items.each do |order_item| %>
+          <% @order.each do |order| %>
           <td><%= order_item_name %></td>
-          <td><%= order_.item.add_tax_price.to_s(:dalimited) %></td>
+          <td><%= order.item.add_tax_price.to_s(:dalimited) %></td>
           <td><%= order_item.quantity %></td>
-          <td><%= order.sum %></td>
+          <td><%= order.item.add_tax_price.to_s(:dalimited) * order_item.quantity %></td>
         <% end %>
         </tr>
       </table>
