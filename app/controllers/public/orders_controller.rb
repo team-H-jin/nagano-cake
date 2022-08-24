@@ -1,33 +1,7 @@
 class Public::OrdersController < ApplicationController
 
   def new
-
     @order = Order.new
-      
-
-
-
-
-
-
-
-
-  end
-
-  def done
-
-
-
-
-
-
-
-
-
-
-
-    @order = Order.new
-
   end
 
   def confirm
@@ -38,9 +12,8 @@ class Public::OrdersController < ApplicationController
       @sum += cart_item.sum_price
     end
     @total = @sum + postage
-
-    @order = Order.new(order_params)
-
+    
+    @order = Order.new
 
     if params[:order][:selected_address] == "customer_address"
       @order.postcode = current_customer.postcode
@@ -53,13 +26,32 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
 
-    else params[:order][:selected_address] == "new_address"
-
+    elsif params[:order][:selected_address] == "new_address"
+      @order.postcode = params[:order][:postcode]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
   end
 
   def create
-    redirect_to orders_done_path
+    cart_items = current_customer.cart_items.all
+    @order = current_customer.orders.new(order_params)
+    if @order.save
+       cart_items.each do |cart|
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart.item_id
+      order_detail.order_id = @order.id
+      order_detail.quantity = cart.quantity
+      order_detail.price = cart.item.price
+      order_detail.save
+    end
+    redirect_to　orders_done_path
+    cart_items.destroy_all
+    else
+    @order = Order.new(order_params)
+    render :new
+
+    end
   end
 
   def postage
@@ -78,7 +70,7 @@ class Public::OrdersController < ApplicationController
   def order_params
   	params.require(:order).permit(:name, :address, :postcode, :postage,
   	                              :price, :payment_method, :status,
-  	                              :created_at, :customer_id, :item_id, :quantity)
+  	                              :created_at, :customer_id, :item_id, :quantity, :selected_address)
   end
-
+  
 end
