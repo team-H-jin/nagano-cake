@@ -1,3 +1,4 @@
+
 class Public::AddressesController < ApplicationController
 
   def index
@@ -28,4 +29,5 @@ class Public::AddressesController < ApplicationController
 	    @shopping_address.destroy
 	    redirect_to addresses_path
 	end
+
 
