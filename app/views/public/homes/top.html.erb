@@ -1,42 +1,42 @@
 <div class="container">
-    <div class="row">
-        <div class="col-lg-3">
-           <p>ジャンル検索</p>
-            <% @genres.each do |genre| %>
-            <%= link_to genre.name,genre_path(genre) %><br>
-            <% end %>
-        </div>
-            
-        <div class="col-lg-9">
-         <div class="parent">
-          
-    　　</div>
-            <!--bootstrap 反応しない-->
-         <div class="background-new" style="">
-         <img class="card-img" src="reserve.png" alt="">
-          <div class="card-img-overlay">
-         <p class="text-white">
-          <br>
-          ようこそ、ながのCAKEへ！<br>
-          このサイトでは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。<br>
-         </p>
-          </div>
-         </div>
-         <div class="container">
-    </div>
-         <h4>新着商品</h4>
-         <div class="item-wrap row">
-             <% @items.each do |item| %>
-              <div class="item-box col-lg-3">
-                <div><%= image_tag item.image, size: "200x200" %></div>
-                <div><%= link_to item.name, item_path(item.id) %></div>
-                <div>¥<%= item.price %>-</div>
-              </div>
-                 <% end %>
-                 <%= paginate @items %>
-          </div>
-        </div>
-    </div>
+ <div class="row">
+  <div class="col-lg-2">
+   <p class="text-center">ジャンル検索</p>
+   <% @genres.each do |genre| %>
+   <%= link_to genre.name,genre_path(genre) %><br>
+   <% end %>
+  </div>
+  <div class="col-lg-7">
+   <table>
+    <tr>
+     <td>
+      <div class="shadow-lg"><%= image_tag 'top/ナポレオン.jpg', size: "400x300" %></div>
+     </td>
+     <td>　　</td>
+     <td>
+      <p  class="small text-center">ようこそ、ながのCAKEへ！</p>
+      <p  class="small text-center">このサイトは、</p>
+      <p  class="small text-center">ケーキ販売のECサイトになります。</p>
+      <p  class="small text-center">会員でない方も商品の閲覧はできますが、</p>
+      <p  class="small text-center">購入には会員登録が必要になります。</p>
+     </td>
+    </tr>
+   </table>
+   <br><br><h4>　　<u>新着商品</u></h4>
+   <table>
+     <tr>
+      <% @items.each do |item| %>
+      <td>
+       <%= link_to admin_item_path(item.id) do %>
+       <%= image_tag item.image, size:'150x150' %><br>
+       <p  class="text-center"><%= link_to item.name, item_path(item.id) %><% end %></p>
+       <p  class="text-center"><%= item.price %>円</p>
+      </td>
+      <% end %>
+     </tr>
+    </table>
+   </div>
+   <div class="col-lg-3"></div>
+   </div>
+  </div>
 </div>

@@ -53,8 +53,8 @@
             <% end %>
           </li>
           <li class="m-1">
-            <button type="button" class="btn btn-success rounded-pill">
-            <%= current_customer.last_name %>様ログイン中</button>
+            <%= link_to root_path, class: "btn btn-success rounded-pill" do %>
+            <%= current_customer.last_name %>様ログイン中<% end %>
           </li>
         <% else %>
           <li class="m-1">
