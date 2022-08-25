@@ -49,7 +49,7 @@ class Public::OrdersController < ApplicationController
     end
 
     cart_items.destroy_all
-    redirect_to　orders_done_path
+    redirect_to orders_done_path
     else
     @order = Order.new(order_params)
     render :new
