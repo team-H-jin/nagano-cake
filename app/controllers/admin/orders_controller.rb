@@ -1,25 +1,44 @@
 class Admin::OrdersController < ApplicationController
     
  def show
-    @customer = Customer.find(params[:id])
-    @order_details = Order_details.find(params[:id])
     @order = Order.find(params[:id])
-    @order_items= Customer.find(params[:id]).order_items.all
-    @total = @order_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @customer = @order.customer
+    @order_details = OrderDetail.where(order_id: @order.id)
+    @cart_items = Customer.find(params[:id]).cart_items.all
+    @sum = 0
+    @cart_items.each do |cart_item|
+      @sum += cart_item.sum_price
+     end 
+    @total = @sum + postage 
  end
  
-     private  
+ def postage
+    @postage = 800
+ end
+
+ def update
+     @order = Order.find(params[:id])
+     if @order.update(order_params)
+       if @order.status == "payment_confirm"
+          @order.order_details.each do |order_detail|
+          order_detail.update(making_status: "makig_waiting" )
+          end
+       end
+       redirect_to admin_order_path
+     else
+       render :show
+     end
+ end
+ 
+ private  
  
  def customer_params
     params.require(:customer).permit(:last_name,:first_name)
  end
  
- def order_detail_params
-    params.require(:order_detail).permit(:status,:price,:quantity,:created_at,:order_id,:item_id)
- end   
- 
  def order_params
-    params.require(:order).permit(:name,:address,:payment_method,:status,:price,:customer_id)
+    params.require(:order).permit(:name,:address,:payment_method,
+                                  :status,:price,:customer_id,:created_at)
  end
 
     
