@@ -1,7 +1,7 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-white bg-white">
     <div class="container">
-      <%= image_tag 'logo.jpg', size: "125x125" %>
+      <%= link_to root_path do %><%= image_tag 'logo.jpg', size: "125x125" %><% end %>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
@@ -17,7 +17,7 @@
             <% end %>
           </li>
           <li class="m-1">
-            <%=  link_to admin_orders_path ,class: "btn btn-outline-secondary rounded-pill" do %>
+            <%=  link_to admin_root_path ,class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-shopping-cart"></i> 注文履歴一覧
             <% end %>
           </li>
@@ -53,12 +53,12 @@
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to root_path, class: "btn btn-success rounded-pill" do %>
+            <%= link_to orders_path, class: "btn btn-success rounded-pill" do %>
             <%= current_customer.last_name %>様ログイン中<% end %>
           </li>
         <% else %>
           <li class="m-1">
-            <%= link_to about_path,class: "btn btn-outline-secondary rounded-pill" do %>
+            <%= link_to about_path, data: {"turbolinks" => false},class: "btn btn-outline-secondary rounded-pill" do %>
               <i class="fas fa-store"></i> About
             <% end %>
           </li>

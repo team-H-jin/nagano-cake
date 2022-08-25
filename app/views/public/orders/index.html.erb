@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
-      <br><h4>　　<u>注文一覧</u></h4><br>
+      <br><h4>　　<u>注文履歴一覧</u></h4><br>
       <table class="table table-bordered">
         <thead>
           <tr class="table-info">
@@ -19,19 +19,21 @@
           <tr>
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-              〒<%= order.posecode %><br>
+              〒<%= order.postcode %><br>
     		      <%= order.address %><br>
     		      <%= order.name %>
             </td>
             <td>
+              <% @sum = 0 %>
               <% order.order_details.each do |order_detail| %>
+              <% @sum += order_detail.sum_price %>
     		      <%= order_detail.item.name %><br>
     		      <% end %>
             </td>
-            <td><%= total.add_tax_price.to_s(:dalimited) %></td>
-            <td><%= order.status %></td>
+            <td><%= @sum %></td>
+            <td><%= order.payment_method_i18n %></td>
             <td>
-              <%= link_to '表示する', orders_path, class: "btn btn-sm btn-primary rounded-pill" %>
+              <%= link_to '表示する', order_path(order.id), class: "btn btn-sm btn-primary rounded-pill" %>
             </td>
           </tr>
           <% end %>

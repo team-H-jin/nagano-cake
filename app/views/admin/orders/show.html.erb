@@ -21,11 +21,11 @@
        <td>　　　　　　<%= @order.payment_method %></td>
      </tr>
      <tr>
-      <td>注文ステータス</td> 
+      <td>注文ステータス</td>
       <td>　　　　　　　<%= @order.status %></td>
      </tr>
     </table>
-    
+
     <table cellspacing="10">
       <thead>
         <tr>
@@ -40,9 +40,9 @@
        <% @order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.item.add_tax_price.to_s(:dalimited) %></td>
+          <td><%= order_detail.item.add_tax_price %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.item.add_tax_price.to_s(:dalimited) * order_detail.quantity %></td>
+          <td><%= order_detail.item.add_tax_price * order_detail.quantity %></td>
           <td>
            <%= form_with model: [:admin, order_detail], method: :patch do |f| %>
            <%= f.select :status, OrderDetail.statuses.keys.map {|k| [I18n.t("enums.order_detail.status.#{k}"), k]} %>
@@ -58,15 +58,15 @@
      <table class='table under'>
         <tr>
           <th>商品合計</th>
-          <td><%= @sum.to_s(:delimited) %></td>
+          <td><%= @sum %></td>
         </tr>
         <tr>
           <th>送料</th>
-          <td><%= @postage.to_s(:delimited) %></td>
+          <td><%= @postage %></td>
         </tr>
         <tr>
           <th>請求合計金額</th>
-          <td><%= @total.to_s(:dalimited) %></td>
+          <td><%= @total %></td>
         </tr>
       </table>
     </div>
