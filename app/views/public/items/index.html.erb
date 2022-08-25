@@ -1,5 +1,11 @@
-<%= render 'genres/search', genres: @genres %>
-
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+           <p>ジャンル検索</p>
+            <% @genres.each do |genre| %>
+            <%= link_to genre.name,genre_path(genre) %><br>
+            <% end %>
+        </div>
         <div class="col-lg-9">
             <h2>商品一覧</h2><p>(全<%= @items.count %>件)</p>
             <!--商品詳細をここにeachで並べる-->
@@ -15,3 +21,5 @@
              
             </div>
         </div>
+    </div>
+</div>

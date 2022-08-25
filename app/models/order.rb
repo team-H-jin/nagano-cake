@@ -9,9 +9,10 @@ class Order < ApplicationRecord
     (self.price * 1.10).round
   end
   
-  ## 小計を求めるメソッド
-  def subtotal
-    order.add_tax_price * quantity
+  def sum_price # 実際に作成したサイトは税金も算出していたのでメソッドを記載していました
+    self.item.add_tax_price*self.quantity
   end
+  
+
     
 end
