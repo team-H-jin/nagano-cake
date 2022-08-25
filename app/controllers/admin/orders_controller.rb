@@ -6,10 +6,11 @@ class Admin::OrdersController < ApplicationController
     @order_details = OrderDetail.where(order_id: @order.id)
     @cart_items = Customer.find(params[:id]).cart_items.all
     @sum = 0
-    @cart_items.each do |cart_item|
-      @sum += cart_item.sum_price
-     end 
-    @total = @sum + postage 
+    @order_details.each do |order_detail|
+      @sum += order_detail.sum_price
+    end
+
+    @total = @sum + postage
  end
  
  def postage
