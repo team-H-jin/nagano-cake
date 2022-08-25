@@ -1,19 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-           <p>ジャンル検索</p>
+          <table class="table table-bordered">
+            <tr><th>ジャンル検索</th></tr>
             <% @genres.each do |genre| %>
-            <%= link_to genre.name,genre_path(genre) %><br>
+            <tr><td><%= link_to genre.name,genre_path(genre) %></td></tr>
             <% end %>
+          </table>
         </div>
         
-        <div class="col-lg-9">
+        <div class="col-lg-offset-1">
           <%= image_tag @item.image, size:'250x250' %>
-          <h4><%= @item.name %></h4>
+        </div>
+        <div class="col-lg-5">
+          <h4><strong><%= @item.name %></strong></h4>
           <p><%= @item.introduction %></p>
-          <p>¥<%= @item.add_tax_price %>（税込）</p>
+          <p><strong>¥<%= @item.add_tax_price %>（税込）</strong></p>
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-        		<%= f.select :quantity, *[1..10] %>
+        		<%= f.select :quantity, *[1..10], placeholder:"個数選択" %>
 	        	<%= f.hidden_field :item_id, :value => @item.id %>
 	        	<%= f.submit "カートに入れる", class: "btn btn-success" %>
         	<% end %>
