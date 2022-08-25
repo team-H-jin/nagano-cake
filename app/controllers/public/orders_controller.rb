@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
 
     @total = @sum + postage
 
-    @order = Order.new
+    @order = Order.new(order_params)
 
     if params[:order][:selected_address] == "customer_address"
       @order.postcode = current_customer.postcode
@@ -82,6 +82,6 @@ class Public::OrdersController < ApplicationController
   def order_params
   	params.require(:order).permit(:name, :address, :postcode, :postage,
   	                              :price, :payment_method, :status,
-  	                              :created_at, :customer_id, :item_id, :quantity, :selected_address)
+  	                              :created_at, :customer_id, :item_id, :quantity)
   end
 end
