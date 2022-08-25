@@ -8,11 +8,11 @@ class Order < ApplicationRecord
   def add_tax_price
     (self.price * 1.10).round
   end
-  
+
   def sum_price # 実際に作成したサイトは税金も算出していたのでメソッドを記載していました
     self.item.add_tax_price*self.quantity
   end
-  
 
-    
+
+
 end
