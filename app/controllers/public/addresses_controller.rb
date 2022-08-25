@@ -29,10 +29,3 @@ class Public::AddressesController < ApplicationController
 	    redirect_to addresses_path
 	end
 
-	private
-
-  def shopping_address_params
-  	params.require(:shopping_address).permit(:postcode, :address, :name ,:customer_id)
-  end
-
-end
