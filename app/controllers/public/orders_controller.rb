@@ -57,15 +57,24 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def postage
-    @postage = 800
-  end
-
   def index
+    @orders = current_customer.orders.all
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
+
+    @sum = 0
+    @order_details.each do |order_detail|
+      @sum += order_detail.sum_price
+    end
+
+    @total = @sum + postage
+  end
+
+  def postage
+    @postage = 800
   end
 
   private
@@ -75,5 +84,4 @@ class Public::OrdersController < ApplicationController
   	                              :price, :payment_method, :status,
   	                              :created_at, :customer_id, :item_id, :quantity)
   end
-
 end

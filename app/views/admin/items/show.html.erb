@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-3">
-      <br><h4><u>商品詳細</u></h4>
+      <br><h4><u>商品詳細</u></span></h4>
       <%= image_tag @item.image, size:'250x250' %>
     </div>
     <div class="col-lg-7"><br><br><br>
@@ -21,7 +21,7 @@
         </tr>
         <tr>
           <td>税込価格<br>（税抜価格）</td>
-          <td><%= @item.add_tax_price.to_s(:dalimited) %>（<%= @item.price %>）円</td>
+          <td><%= @item.add_tax_price %>（<%= @item.price %>）円</td>
         </tr>
         <tr>
           <td>販売ステータス　</td>
