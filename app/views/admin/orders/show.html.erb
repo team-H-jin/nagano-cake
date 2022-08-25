@@ -5,11 +5,11 @@
     <table>
      <tr>
       <td>購入者</td>
-      <td>　　　　　　<%= @customer.last_name %><%= @customer.first_name %></td>
+      <td>　　　　　　<%= link_to @order.customer.full_name,admin_customer_path(@order.customer) %></td>
      </tr>
      <tr>
       <td>注文日</td>
-      <td>　　　　　　<%= @order_details.created_at.strftime('%Y/%m/%d')  %></td>
+      <td>　　　　　　<%= @order.created_at.strftime('%Y/%m/%d')  %></td>
      </tr>
      <tr>
        <td>配送先</td>
@@ -37,20 +37,38 @@
         </tr>
       </thead>
       <tbody>
-        <% @orders.each do |order| %>
+       <% @order_details.each do |order_detail| %>
         <tr>
-          <td><%= order.name %></td>
-          <td><%= order.price.add_tax_price %></td>
-          <td><%= order.quantity %></td>
-          <td><%= order.subtotal%></td>
-          <% @合計金額 += order.subtotal %>
-          <td><%= order.status %></td>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.item.add_tax_price.to_s(:dalimited) %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= order_detail.item.add_tax_price.to_s(:dalimited) * order_detail.quantity %></td>
+          <td>
+           <%= form_with model: [:admin, order_detail], method: :patch do |f| %>
+           <%= f.select :status, OrderDetail.statuses.keys.map {|k| [I18n.t("enums.order_detail.status.#{k}"), k]} %>
+         　<%= f.submit "更新", class:"btn btn-success" %>
+           <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
     </table>
     </div>
     <div class="col-lg-4">
+     <table class='table under'>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @sum.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @postage.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>請求合計金額</th>
+          <td><%= @total.to_s(:dalimited) %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

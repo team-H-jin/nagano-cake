@@ -58,7 +58,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def postage
-    postage = 800
+    @postage = 800
   end
 
   def index
