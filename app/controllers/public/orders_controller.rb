@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       @sum += cart_item.sum_price
     end
+
     @total = @sum + postage
 
     @order = Order.new
@@ -31,6 +32,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     end
+
   end
 
   def create
@@ -45,8 +47,9 @@ class Public::OrdersController < ApplicationController
       order_detail.price = cart.item.price
       order_detail.save
     end
-    redirect_to　orders_done_path
+
     cart_items.destroy_all
+    redirect_to　orders_done_path
     else
     @order = Order.new(order_params)
     render :new
