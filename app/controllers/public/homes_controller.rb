@@ -1,8 +1,7 @@
 class Public::HomesController < ApplicationController
-    
+
     def top
-        @items = Item.page(params[:page]).per(4)
+        @items = Item.all.order(created_at: :desc).limit(5)
         @genres = Genre.all
-    end 
-    
+    end
 end
