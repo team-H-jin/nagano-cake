@@ -5,28 +5,24 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
 
     @sum = 0
     @cart_items.each do |cart_item|
       @sum += cart_item.sum_price
     end
-
     @total = @sum + postage
-
-    @order = Order.new(order_params)
 
     if params[:order][:selected_address] == "customer_address"
       @order.postcode = current_customer.postcode
       @order.name = current_customer.full_name
       @order.address = current_customer.address
-
     elsif params[:order][:selected_address] == "shopping_address"
       @address = ShoppingAddress.find(params[:order][:address_id])
       @order.postcode = @address.postcode
       @order.address = @address.address
       @order.name = @address.name
-
     elsif params[:order][:selected_address] == "new_address"
       @order.postcode = params[:order][:postcode]
       @order.address = params[:order][:address]
@@ -36,10 +32,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    cart_items = current_customer.cart_items.all
-    @order = current_customer.orders.new(order_params)
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items
+
     if @order.save
-      cart_items.each do |cart|
+      @cart_items.each do |cart|
       order_detail = OrderDetail.new
       order_detail.item_id = cart.item_id
       order_detail.order_id = @order.id
@@ -47,8 +45,7 @@ class Public::OrdersController < ApplicationController
       order_detail.price = cart.item.price
       order_detail.save
     end
-
-    cart_items.destroy_all
+    @cart_items.destroy_all
     redirect_to orders_done_path
     else
     @order = Order.new(order_params)
@@ -69,7 +66,6 @@ class Public::OrdersController < ApplicationController
     @order_details.each do |order_detail|
       @sum += order_detail.sum_price
     end
-
     @total = @sum + postage
   end
 
@@ -80,6 +76,8 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-  	params.require(:order).permit(:name, :address, :postcode, :postage,:price, :payment_method, :status,:created_at, :customer_id, :item_id, :quantity)
+  	params.require(:order).permit(:name, :address, :postcode, :postage,:price,
+  	                              :payment_method, :status,:created_at,
+  	                              :customer_id, :item_id, :quantity)
   end
 end
