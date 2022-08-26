@@ -1,15 +1,10 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-3 p-20">
-          <table class="table table-bordered table-striped table-hover">
-            <tr><th>ジャンル検索</th></tr>
-            <% @genres.each do |genre| %>
-            <tr><td><%= link_to genre.name,genre_path(genre) %></td></tr>
-            <% end %>
-          </table>
+        <div class="col-lg-3">
+          <%= render 'public/genres/search', genres: @genres %>
         </div>
         
-        <div class="col-sm-9">
+        <div class="col-sm-9 mx-auto">
             <h2>商品一覧</h2><p class="text-right">[全<%= @items.count %>件]</p>
             <!--商品詳細をここにeachで並べる-->
             <div class="item-wrap row">

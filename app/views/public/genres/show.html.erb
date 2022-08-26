@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <h4></h4>
+          <%= render 'search', genres: @genres %>
         </div>
-        <div class="col-lg-9">
-            <h2>「<%= @genre.name %>」一覧</h2><p>(全<%= @items.count %>件)</p>
+        <div class="col-lg-9 mx-auto">
+            <h2>「<%= @genre.name %>」一覧</h2><p class="text-center">[全<%= @items.count %>件]</p>
             <!--商品詳細をここにeachで並べる-->
             <div class="item-wrap row">
             <% @items.each do |item| %>

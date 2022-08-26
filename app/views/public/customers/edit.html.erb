@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-auto mx-auto">
+    <div class="col-lg-10 mx-auto">
       <h4>会員情報編集</h4>
    
       <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
@@ -27,7 +27,7 @@
           <%= f.label :メールアドレス　　　　　　　　　%><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div><br>
 
-        <div class="col-auto mx-auto">
+        <div class="text-right">
           <%= f.submit "編集内容を保存", class: "btn btn-success rounded-pill" %>
           <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger rounded-pill" %>
         </div>

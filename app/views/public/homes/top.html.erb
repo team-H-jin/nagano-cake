@@ -1,10 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="col-lg-2">
-   <p class="text-center">ジャンル検索</p>
-   <% @genres.each do |genre| %>
-   <%= link_to genre.name,genre_path(genre) %><br>
-   <% end %>
+    <%= render 'public/genres/search', genres: @genres %>
   </div>
   <div class="col-lg-7">
    <table>
