@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3 p-20">
-          <table class="table table-bordered">
+          <table class="table table-bordered table-striped table-hover">
             <tr><th>ジャンル検索</th></tr>
             <% @genres.each do |genre| %>
             <tr><td><%= link_to genre.name,genre_path(genre) %></td></tr>

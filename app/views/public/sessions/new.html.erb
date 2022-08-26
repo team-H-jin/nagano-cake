@@ -9,16 +9,16 @@
       
       <div class="text-center">
         <%= f.label :メールアドレス　　　 %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %>
       </div>
 
       <div class="text-center">
         <%= f.label :パスワード　　　　　 %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
       </div>
   
         <div class="text-center">
-          <%= f.submit "ログイン", class:"btn btn-primary" %>
+          <%= f.submit "ログイン", class:"btn btn-primary rounded-pill" %>
         </div>
 
 
