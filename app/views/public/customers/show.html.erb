@@ -5,7 +5,7 @@
      <table>
        <tr>
          <th><h5><strong>登録情報　</h5></strong></th>
-         <th><%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %></th>
+         <th><%= link_to "編集する", customers_information_edit_path, class: "btn btn-success rounded-pill" %></th>
        </tr>
      </table>
       
@@ -39,11 +39,11 @@
       <table>
         <tr>
           <th><h5><strong>配送先</strong></h5></th>
-          <th><%= link_to "一覧を見る", shopping_addresses_path(@customer), class: "btn btn-primary" %></th>
+          <th><%= link_to "一覧を見る", shopping_addresses_path(@customer), class: "btn btn-primary rounded-pill" %></th>
         </tr>
         <tr>
           <th><h5><strong>注文履歴　</strong></h5></th>
-          <th><%= link_to "一覧を見る", orders_path(@customer), class: "btn btn-primary" %></th>
+          <th><%= link_to "一覧を見る", orders_path(@customer), class: "btn btn-primary rounded-pill" %></th>
         </tr>
       </table>
     </div>
