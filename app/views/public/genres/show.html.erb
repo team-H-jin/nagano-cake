@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+          <%= render 'search', genres: @genres %>
+        </div>
+        <div class="col-lg-9 mx-auto">
+            <h2>「<%= @genre.name %>」一覧</h2><p class="text-center">[全<%= @items.count %>件]</p>
+            <!--商品詳細をここにeachで並べる-->
+            <div class="item-wrap row">
+            <% @items.each do |item| %>
+             <div class="item-box col-lg-3">
+                <div><%= image_tag item.image, size: "200x200" %></div>
+                <div><%= link_to item.name, item_path(item.id) %></div>
+                <div>¥<%= item.price %></div>
+            </div>
+            <% end %>
+            <%= paginate @items %>
+             
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+ <div class="row">
+  <div class="col-lg-2">
+    <%= render 'public/genres/search', genres: @genres %>
+  </div>
+  <div class="col-lg-7">
+   <table>
+    <tr>
+     <td>
+      <div class="shadow-lg"><%= image_tag 'Cake/シャインマスカットタルト　ホール.jpeg', size: "400x300" %></div>
+     </td>
+     <td>　　</td>
+     <td>
+      <p  class="small text-center">ようこそ、ながのCAKEへ！</p>
+      <p  class="small text-center">このサイトは、</p>
+      <p  class="small text-center">ケーキ販売のECサイトになります。</p>
+      <p  class="small text-center">会員でない方も商品の閲覧はできますが、</p>
+      <p  class="small text-center">購入には会員登録が必要になります。</p>
+     </td>
+    </tr>
+   </table>
+   <br><br><h4>　　<u>新着商品</u></h4>
+   <table>
+     <tr>
+      <% @items.each do |item| %>
+      <td>
+       <% if admin_signed_in? %>
+        <%= link_to admin_item_path(item.id) do %>
+        <%= image_tag item.image, size:'150x150' %><% end %>
+       <% else %>
+        <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, size:'150x150' %><% end %>
+       <% end %>
+       <br>
+       <p  class="text-center"><%= link_to item.name, item_path(item.id) %></p>
+       <p  class="text-center"><%= item.price %>円</p>
+      </td>
+      <td>　</td>
+      <% end %>
+     </tr>
+    </table>
+   </div>
+   <div class="col-lg-3"></div>
+   </div>
+  </div>
+</div>

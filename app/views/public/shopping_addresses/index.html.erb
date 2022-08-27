@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <br><h4>　　<u>配送先登録 / 一覧</u></h4><br>
+      <%= form_with model: @shopping_address , url: shopping_addresses_path , method: :post do |f| %>
+      <table>
+        <tr>
+          <td>郵便番号(ハイフンなし)　　</td>
+          <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: 50 %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>宛名</td>
+          <td><%= f.text_field :name, placeholder: "令和道子" %></td>
+          <td>　　<%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %></td>
+        </tr>
+      </table>
+      <% end %>
+      <br>
+      <br>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-info">
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shopping_addresses.each do |shopping_address| %>
+          <tr>
+            <td><%= shopping_address.postcode %></td>
+            <td><%= shopping_address.address %></td>
+            <td><%= shopping_address.name %></td>
+            <td>
+              <%= link_to '編集する', edit_shopping_address_path(shopping_address.id), class: "btn btn-sm btn-success rounded-pill" %>　<%= link_to '削除する', shopping_address_path(shopping_address.id), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>

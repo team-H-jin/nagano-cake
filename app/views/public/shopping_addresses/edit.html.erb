@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+    <br><h4>　　<u>配送先編集</u></h4><br>
+    <%= form_with model: @shopping_address do |f| %>
+      <table>
+        <tr>
+          <td>郵便番号(ハイフンなし)　　</td>
+          <td><%= f.text_field :postcode %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, size: 50 %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>宛名</td>
+          <td><%= f.text_field :name %></td>
+          <td>　　<%= f.submit '変更内容を保存', class: 'btn btn-success rounded-pill' %></td></tr>
+      </table>
+      <% end %>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>

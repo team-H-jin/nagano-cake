@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-2">
+      <h4><u>商品新規登録</u></h4>
+    </div>
+    <div class="col-lg-6">
+      <%= form_with model: [:admin,@item] do |f| %>
+      <table>
+        <tr>　</tr>
+        <tr>
+          <th>商品画像</th>
+          <th></th>
+          <th><%= f.file_field :image, accept: "image/*" %></th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th>　</th>
+          <th><%= f.text_field :name, placeholder: "商品名", size: 30 %></th>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <th></th>
+          <th><%= f.text_area :introduction, placeholder: "ここに説明文を記述します", size: "33x5" %></th>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <th></th>
+          <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></th>
+        </tr>
+        <tr>
+          <th>税抜価格</th>
+          <th></th>
+          <th><%= f.text_field :price, placeholder: "1000", size: 30 %>円</th>
+        </tr>
+        <tr>
+          <th>
+          販売ステータス
+          </th>
+          <th></th>
+          <th>
+          <%= f.radio_button :status, 'true' %>
+          <%= f.label :status, '販売中' %>
+          <%= f.radio_button :status, 'false' %>
+          <%= f.label :status, '販売停止中' %>
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>　</th>
+          <th>
+            <%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %>
+          </th>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

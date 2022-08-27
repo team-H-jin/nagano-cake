@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .background-new{
+     height:300px;
+     max-width: 500px;
+background-image: url("images3.jpeg");
+background-size: cover;
+}

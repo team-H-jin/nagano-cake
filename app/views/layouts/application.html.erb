@@ -2,15 +2,35 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/cccf4986d1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.slider').bxSlider({
+          auto: true,
+          pause: 3000,
+        });
+      });
+    </script>
   </head>
-
+  <%= render 'layouts/header' %>
   <body>
     <%= yield %>
   </body>
+  <footer>
+    <div class='container mt-5'>
+  	　<div class='row'>
+    	  <div class='mx-auto'>
+    		<p>CopyRight TeamH.inc</p>
+    	  </div>
+      </div>
+    </div>
+  </footer>
 </html>

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+         <%= render 'public/genres/search', genres: @genres %>
+        </div>
+
+        <div class="col-lg-offset-1 mx-auto">
+          <%= image_tag @item.image, size:'250x250' %>
+        </div>
+        <div class="col-lg-5 mx-auto">
+          <h2><strong><%= @item.name %></strong></h2>
+          <h4><%= @item.introduction %></h4>
+          <h6><strong>¥<%= @item.add_tax_price %>（税込）</strong></h6>
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+	        	<% if @item.status == true %>
+	        	    <%= f.select :quantity, *[1..10], prompt:"個数選択" %>
+	            	<%= f.hidden_field :item_id, :value => @item.id %>
+      					<%= f.submit "カートに入れる", class: "btn btn-success rounded-pill" %>
+      			<% else %>
+      					<button type="button" class="btn btn-danger rounded-pill">販売停止中</button>
+      			<% end %>
+        	<% end %>
+        </div>
+    </div>
+</div>

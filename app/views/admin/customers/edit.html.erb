@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+     <h4 class="bg-primary text-light"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+     <%= form_with model: [:admin,@customer],  method: :patch do |f| %>
+     <table>
+      <tr>
+       <td>会員ID</td>
+       <td>　　　　　　<%= @customer.id %></td>
+      </tr>
+      <tr>
+       <td>氏名</td>
+       <td>　　　　　　<%= f.text_field :last_name, autofocus: true %>　　<%= f.text_field :first_name, autofocus: true %></td>
+      </tr>
+      <tr>
+       <td>フリガナ</td>
+       <td>　　　　　　<%= f.text_field :last_name_kana, autofocus: true %>　　<%= f.text_field :first_name_kana, autofocus: true %></td>
+      </tr>
+      <tr>
+       <td>郵便番号（ハイフンなし)</td>
+       <td>　　　　　　<%= f.text_field :postcode, autofocus: true %></td>
+      </tr>
+      <tr>
+       <td>住所</td>
+       <td>　　　　　　<%= f.text_field :address, autofocus: true %></td>
+      </tr>
+      <tr>
+       <td>電話番号（ハイフンなし）</td>
+       <td>　　　　　　<%= f.text_field :phone_number, autofocus: true %></td>
+      </tr>
+      <tr>
+       <td>メールアドレス</td>
+       <td>　　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+       <td><%= f.radio_button :is_deleted, 'false' %>
+           <%= f.label :is_deleted, '有効' %></td>
+       <td><%= f.radio_button :is_deleted, 'true' %>
+           <%= f.label :is_deleted, '退会' %></td>
+      </tr>
+      <tr>
+       <td><%= f.submit '変更を保存', class: 'btn btn-success  rounded-pill'%></td>
+      </tr>
+     </table>
+     <% end %>
+  </div>
+ </div>
+</div>
