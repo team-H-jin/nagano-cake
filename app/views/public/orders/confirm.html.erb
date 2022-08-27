@@ -55,13 +55,14 @@
           <p>宛名：<%= @order.name %></p>
         </div>
       </div>
-      
+
       <div class="text-right">
         <%= form_with model: @order, url:orders_path, method: :post do |f| %>
           <%= f.hidden_field :name,value: @order.name %>
           <%= f.hidden_field :address,value: @order.address %>
           <%= f.hidden_field :postcode,value: @order.postcode %>
           <%= f.hidden_field :payment_method,value: @order.payment_method %>
+          <%= f.hidden_field :price,value: @total %>
           <%= f.hidden_field :postage,value: 800 %>
           <%= f.submit "注文を確定する",class:"btn btn-primary rounded-pill" %>
         <% end %>
