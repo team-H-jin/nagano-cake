@@ -40,7 +40,7 @@
             <td><%= shopping_address.address %></td>
             <td><%= shopping_address.name %></td>
             <td>
-              <%= link_to '編集する', edit_shopping_address_path(shopping_address.customer_id), class: "btn btn-sm btn-success rounded-pill" %>　<%= link_to '削除する', shopping_address_path(shopping_address.id), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
+              <%= link_to '編集する', edit_shopping_address_path(shopping_address.id), class: "btn btn-sm btn-success rounded-pill" %>　<%= link_to '削除する', shopping_address_path(shopping_address.id), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
             </td>
           </tr>
           <% end %>
