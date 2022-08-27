@@ -1,5 +1,5 @@
 class Public::ShoppingAddressesController < ApplicationController
-
+       before_action :authenticate_customer!
   def index
     @shopping_address = ShoppingAddress.new
     @shopping_addresses = current_customer.shopping_addresses

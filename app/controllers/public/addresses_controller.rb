@@ -1,6 +1,6 @@
 
 class Public::AddressesController < ApplicationController
-
+      before_action :authenticate_customer!
   def index
     @shopping_address = ShoppingAddress.new
     @shopping_addresses = ShoppingAddress.all
@@ -31,3 +31,4 @@ class Public::AddressesController < ApplicationController
 	end
 
 
+end
