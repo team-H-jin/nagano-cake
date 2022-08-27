@@ -62,8 +62,7 @@
           <%= f.hidden_field :address,value: @order.address %>
           <%= f.hidden_field :postcode,value: @order.postcode %>
           <%= f.hidden_field :payment_method,value: @order.payment_method %>
-          <%= f.hidden_field :postage,value: @order.postage %>
-          <%= f.hidden_field :status,value: @order.status %>
+          <%= f.hidden_field :postage,value: 800 %>
           <%= f.submit "注文を確定する",class:"btn btn-primary rounded-pill" %>
         <% end %>
       </div>
