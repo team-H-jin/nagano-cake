@@ -1,38 +1,35 @@
 
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-   <h4>ジャンル一覧・追加</h4>
-   <div class='col-md-2'></div>
-   </div>
+   <div class='mx-auto'>
+   <h4 class='bg-dark text-light'>ジャンル一覧・追加</h4></br>
    <div class='row'>
     <%= form_with model: [:admin,@genre] do |f| %>
-     ジャンル名
-     <%= f.text_field :name, placeholder:"ジャンル名" %>
-     <%= f.submit '新規登録', class: 'btn btn-success' %>
+     ジャンル名　　
+    <%= f.text_field :name, placeholder:"ジャンル名" %>　　
+    <%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %>
     <% end %>
-    </div>
-  <div class='row'>
-    <div class='col-md-8'>
-   <table class='table table-hover table-inverse'>
-    <thead class='thead-dark'>
-     <tr>
-      <th>ジャンル</th>
-     </tr>
-    </thead>
-    <tbody>
-     <% @genres.each do |genre| %>
+    </div></br>
+    <table class='table table-hover table-inverse'>
+     <thead class='thead-dark'>
       <tr>
-       <td><%= genre.name %></td>
-       <td>　　</td>
-       <td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-success'%></td>
-       <td><%= link_to '削除', [:admin,genre], method: :delete, class: "btn btn-sm btn-danger"%></td>
-      <% end %>
+       <th>ジャンル</th>
       </tr>
-    </tbody>
-   </table>
-  </div> 
-  <div class='col-md-2'></div>
+     </thead>
+     <tbody>
+      <% @genres.each do |genre| %>
+       <tr>
+        <td><%= genre.name %></td>
+        <td>　　</td>
+        <td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-success rounded-pill'%></td>
+        <td><%= link_to '削除', [:admin,genre], method: :delete, class: "btn btn-sm btn-danger rounded-pill"%></td>
+       <% end %>
+       </tr>
+     </tbody>
+    </table>
+   </div> 
   </div>
+ </div> 
 
 
 
