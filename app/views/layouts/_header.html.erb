@@ -1,90 +1,90 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-white bg-white">
     <div class="container">
-      <%= link_to root_path do %><%= image_tag 'logo.jpg', size: "125x125" %><% end %>
+      <%= link_to root_path,title:"top" do %><%= image_tag 'logo.jpg', size: "125x125" %><% end %>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-
+      <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
           <li class="m-1">
-            <%= link_to admin_items_path,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-birthday-cake"></i> 商品一覧
+            <%= link_to admin_items_path,class: "btn btn-outline-secondary rounded-pill",title:"item list" do %>
+            <i class="fas fa-birthday-cake"></i> 商品一覧
             <% end %>
           </li>
           <li class="m-1">
-            <%=  link_to admin_customers_path,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-address-book"></i> 会員一覧
+            <%=  link_to admin_customers_path,class: "btn btn-outline-secondary rounded-pill",title:"customer list" do %>
+            <i class="fas fa-address-book"></i> 会員一覧
             <% end %>
           </li>
           <li class="m-1">
-            <%=  link_to admin_root_path ,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-shopping-cart"></i> 注文履歴一覧
+            <%=  link_to admin_root_path ,class: "btn btn-outline-secondary rounded-pill",title:"order list" do %>
+            <i class="fas fa-shopping-cart"></i> 注文履歴一覧
             <% end %>
           </li>
           <li class="m-1">
-            <%=  link_to admin_genres_path ,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-mug-hot"></i> ジャンル一覧
+            <%=  link_to admin_genres_path ,class: "btn btn-outline-secondary rounded-pill",title:"genre list" do %>
+            <i class="fas fa-mug-hot"></i> ジャンル一覧
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to destroy_admin_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <%= link_to destroy_admin_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill",title:"logout" do %>
+            <i class="fas fa-sign-out-alt"></i>
             <% end %>
           </li>
         <% elsif customer_signed_in? %>
           <li class="m-1">
-            <%= link_to customers_my_page_path,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-address-card"></i> マイページ
+            <%= link_to customers_my_page_path,class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
+            <i class="fas fa-address-card"></i> <%= current_customer.full_name %>
             <% end %>
           </li>
           <li class="m-1">
-            <%=  link_to items_path,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-birthday-cake"></i> 商品一覧
+            <%=  link_to items_path,class: "btn btn-outline-secondary rounded-pill",title:"item list" do %>
+            <i class="fas fa-birthday-cake"></i> 商品一覧
             <% end %>
           </li>
           <li class="m-1">
-            <%=  link_to cart_items_path ,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-shopping-cart"></i> カート
+            <%=  link_to cart_items_path ,class: "btn btn-outline-secondary rounded-pill",title:"cart" do %>
+            <i class="fas fa-shopping-cart"></i> カート
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to destroy_customer_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <%= link_to destroy_customer_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill",title:"logout" do %>
+            <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
-          </li>
-          <li class="m-1">
-            <%= link_to orders_path, class: "btn btn-success rounded-pill" do %>
-            <%= current_customer.last_name %>様ログイン中<% end %>
           </li>
         <% else %>
           <li class="m-1">
-            <%= link_to about_path, data: {"turbolinks" => false},class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-store"></i> About
+            <%= link_to about_path, data: {"turbolinks" => false},class: "btn btn-outline-secondary rounded-pill",title:"about" do %>
+            <i class="fas fa-store"></i> About
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to items_path,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-birthday-cake"></i> 商品一覧
+            <%= link_to items_path,class: "btn btn-outline-secondary rounded-pill",title:"item list" do %>
+            <i class="fas fa-birthday-cake"></i> 商品一覧
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to new_customer_registration_path,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-user-edit"></i> 新規登録
+            <%= link_to new_customer_registration_path,class: "btn btn-outline-secondary rounded-pill",title:"sign up" do %>
+            <i class="fas fa-user-edit"></i> 新規登録
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to new_customer_session_path ,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
+            <%= link_to new_customer_session_path ,class: "btn btn-outline-secondary rounded-pill",title:"sign in" do %>
+            <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
           <li class="m-1">
-            <%= link_to new_admin_session_path ,class: "btn btn-outline-secondary rounded-pill" do %>
-              <i class="fas fa-id-badge"></i> 管理者用
+            <%= link_to new_admin_session_path ,class: "btn btn-outline-secondary rounded-pill",title:"admin" do %>
+            <i class="fas fa-id-badge"></i>
             <% end %>
           </li>
         <% end %>
-        </ul>
-      </div>
+      </ul>
     </div>
+    <div class="search_form">
+          <%= form_with url: root_path, local: true, method: :get do |f| %>
+          <%= f.text_field :name, placeholder: "文字を入力", size: 10 %>
+          <%= f.submit"検索" %>
+          <% end %>
+      </div>
   </nav>
 </header>
