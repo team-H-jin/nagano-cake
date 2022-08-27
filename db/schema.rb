@@ -112,11 +112,11 @@ ActiveRecord::Schema.define(version: 2022_08_21_103628) do
     t.string "postcode"
     t.integer "postage"
     t.integer "price"
-    t.string "payment_method"
-    t.integer "status"
+    t.integer "payment_method"
+    t.integer "status", default: 0
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
   end
 
   create_table "shopping_addresses", force: :cascade do |t|
